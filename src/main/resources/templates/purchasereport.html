@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Users</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>Purchase Reports</h1>
+			
+		</div>
+		<a class="btn btn-warning" th:href="@{/admin}" href="#" ><strong>admin-home</strong></a>
+		<form class="form-inline" action="/admin/users/find/bydate" method="post" style="margin-top: 5px">
+			<div class="form-group">
+				
+				<input
+					type="text" 
+					class="form-control" 
+					id="staticEmail2"
+					style="width:5in" 
+					name="findreportbydate"
+					placeholder="Enter Date here(DD-MM-YYYY)"
+					required
+					>		
+			</div>
+			 <input type="submit" value="Filter" style=" background: yellow;border: solid black;padding: 5px; margin-left: 20px">
+		</form>
+		<hr>
+		<form class="form-inline" action="/admin/users/find/byid" method="post">
+			<div class="form-group">
+				
+				<input
+					type="text" 
+					class="form-control" 
+					id="staticEmail2"
+					style="width:5in" 
+					name="findreportbyuserid"
+					placeholder="Enter Userid here..."
+					required
+					>		
+			</div>
+			 <input type="submit" value="Filter" style=" background: yellow;border: solid black;padding: 5px; margin-left: 20px">
+		</form>
+		<table class="table table-striped table-bordered" style="margin-top: 5px">
+			<thead class="table-dark">
+				<tr>
+					<th>Cart-ID</th>
+					<th>User-ID</th>
+					<th>Date</th>
+					<th>Time</th>
+					<th>Mode Of Payment</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="reports:${reportlist}">
+					<td th:text=${reports.cartId}></td>
+					<td th:text=${reports.userId}></td>
+					<td th:text=${reports.date}></td>
+					<td th:text=${reports.time}></td>
+					<td th:text=${reports.modeofPayment}></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+</body>
+</html>

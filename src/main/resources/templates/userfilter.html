@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Users</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body style="background: #ecf0f1;">
+	<div class="container">
+		<div class="row">
+			<h1>List of Users</h1>
+		</div>
+		<a class="btn btn-warning" th:href="@{/admin}" href="#" ><strong>admin-home</strong></a>
+		<div><a href="#" th:href="@{/admin/users/find/back}" class="card-link btn btn-warning" style="margin-top: 5px">Back</a></div>
+		
+		<table class="table table-striped table-bordered " style="margin-top: 5px">
+			<thead class="table-dark">
+				<tr>
+					<th>User-Name</th>
+					<th>User-Email</th>
+					<th>User-Password</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="users:${userfilterlist}">
+					<td th:text=${users.userName}></td>
+					<td th:text=${users.userEmail}></td>
+					<td th:text=${users.userPassword}></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+</body>
+</html>
